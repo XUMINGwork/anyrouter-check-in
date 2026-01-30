@@ -340,17 +340,17 @@ async def main():
 			print('[INFO] No balance changes detected')
 
 	# 为有余额变化的情况添加所有成功账号到通知内容
-	if balance_changed:
-		for i, account in enumerate(accounts):
-			account_key = f'account_{i + 1}'
-			if account_key in current_balances:
-				account_name = account.get_display_name(i)
-				# 只添加成功获取余额的账号，且避免重复添加
-				account_result = f'[BALANCE] {account_name}'
-				account_result += f'\n:money: Current balance: ${current_balances[account_key]["quota"]}, Used: ${current_balances[account_key]["used"]}'
-				# 检查是否已经在通知内容中（避免重复）
-				if not any(account_name in item for item in notification_content):
-					notification_content.append(account_result)
+	# if balance_changed:
+	# 	for i, account in enumerate(accounts):
+	# 		account_key = f'account_{i + 1}'
+	# 		if account_key in current_balances:
+	# 			account_name = account.get_display_name(i)
+	# 			# 只添加成功获取余额的账号，且避免重复添加
+	# 			account_result = f'[BALANCE] {account_name}'
+	# 			account_result += f'\n:money: Current balance: ${current_balances[account_key]["quota"]}, Used: ${current_balances[account_key]["used"]}'
+	# 			# 检查是否已经在通知内容中（避免重复）
+	# 			if not any(account_name in item for item in notification_content):
+	# 				notification_content.append(account_result)
 
 	# 保存当前余额hash
 	if current_balance_hash:
